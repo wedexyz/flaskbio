@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#ch1,#ch2,#ch3,#ch4,#ch5,#ch6,#ch7,#ch8 {
+  height: 200px;
+  
+}
+
+
+
+  </style>
+
+  <link rel="stylesheet" href="static\\w3.css">
+  
+</head>
+<body>
+
+
+<button class="button" onclick="balik()">Home</button>
+
+<div style="display: none;">
+  <p id ="data1"> </p>
+  <p id ="data2"> </p>
+  <p id ="data3"> </p>
+  <p id ="data4"> </p>
+  <p id ="data5"> </p>
+  <p id ="data6"> </p>
+  <p id ="data7"> </p>
+  <p id ="data8"> </p>
+</div>
+
+
+
+<div class="w3-row w3-container" style="padding-top: 10px;">
+  <div class="w3-col s6 w3-center" >
+ 
+    <div id="ch1"></div>
+    <div id="ch2"></div>
+    <div id="ch3"></div>
+    <div id="ch4"></div>
+  </div>
+  <div class="w3-col s6 w3-center" >
+    <div id="ch5"></div>
+    <div id="ch6"></div>
+    <div id="ch7"></div>
+    <div id="ch8"></div>
+  </div>
+</div>
+<script src="static\\index.js"></script>
+<script src="static\\xy.js"></script>
+<script src="static\\animated.js"></script>
+<script src="static\\ch1.js"></script>
+
+
+
+
+<script>
+function balik (){
+        window.stop();
+        window.location = "http://127.0.0.1:8001";
+        
+    }
+const source = new EventSource("/chart-data");
+      source.onmessage = function (event) {
+           const data = JSON.parse(event.data);
+
+           document.getElementById("data1").innerHTML = data.v1;
+           document.getElementById("data2").innerHTML = data.v2;
+           document.getElementById("data3").innerHTML = data.v3;
+           document.getElementById("data4").innerHTML = data.v4;
+           document.getElementById("data5").innerHTML = data.v5;
+           document.getElementById("data6").innerHTML = data.v6;
+           document.getElementById("data7").innerHTML = data.v7;
+           document.getElementById("data8").innerHTML = data.v8;
+
+
+
+                 
+       }
+
+</script>
+  
+
+</body>
+</html>
+
+
